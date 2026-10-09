@@ -1,0 +1,110 @@
+:root {
+    --primary-color: #c0392b;
+    --secondary-color: #d35400;
+    --accent-color: #f39c12;
+    --bg-color: #fdfaf6;
+    --card-bg: #ffffff;
+    --text-color: #2c3e50;
+    --border-color: #e2d7cd;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; padding-bottom: 40px; }
+
+/* Header Layout */
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header h1 { font-size: 1.8rem; }
+
+/* Navigation links (Desktop default) */
+header nav { display: flex; align-items: center; }
+header nav a { color: white; text-decoration: none; margin-left: 15px; font-weight: bold; }
+header nav a:hover { text-decoration: underline; }
+
+/* Hamburger Menu Toggle (Hidden by default on Desktop) */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* Mobile Responsiveness */
+/* Mobile Responsiveness with Slide-Down Animation */
+@media (max-width: 600px) {
+    .menu-toggle {
+        display: block; /* Show burger button on mobile */
+    }
+
+    header nav {
+        display: flex; /* Always keep flex active for smooth transition */
+        flex-direction: column;
+        width: 100%;
+        background: var(--primary-color);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        z-index: 1000;
+
+        /* Slide-down transition setup */
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        padding: 0;
+        transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out, padding 0.4s ease-in-out;
+    }
+
+    /* Triggered when toggled by JavaScript */
+    header nav.active {
+        max-height: 300px; /* Set higher than the total height of all menu items */
+        opacity: 1;
+        padding: 10px 0;
+    }
+
+    header nav a {
+        margin: 10px 0;
+        padding: 8px 20px;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.container { max-width: 1000px; margin: 20px auto; padding: 0 15px; }
+.card { background: var(--card-bg); border-radius: 8px; border: 1px solid var(--border-color); padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.badge { display: inline-block; background: var(--accent-color); color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+.badge-diff { background: #16a085; }
+.edited-tag { font-size: 0.8em; color: #7f8c8d; font-style: italic; }
+
+form label { font-weight: bold; display: block; margin-top: 10px; }
+form input[type="text"], form input[type="email"], form input[type="password"], form input[type="number"], form select, form textarea {
+    width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem;
+}
+button, .btn { display: inline-block; background: var(--primary-color); color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; text-decoration: none; font-size: 0.95rem; font-weight: bold; }
+button:hover, .btn:hover { background: #a93226; }
+.btn-secondary { background: #7f8c8d; }
+.btn-danger { background: #e74c3c; }
+
+.fav-btn { background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color); }
+.fav-btn.active { background: var(--primary-color); color: white; }
+
+.ingredient-input { display: flex; gap: 10px; margin-top: 5px; }
+.ingredient-input button { background: #c0392b; }
+
+.error-list { background: #f8d7da; color: #721c24; padding: 10px; border-radius: 4px; margin-bottom: 15px; }
+.success-msg { background: #d4edda; color: #155724; padding: 10px; border-radius: 4px; margin-bottom: 15px; }
+
